@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8">
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+ </head>
+<body ng-app="myapp"  >	
+<div ng-view=""></div>
+<a href="#/">Home</a>|<a href="#/price">Price</a>
+
+<script>
+var myapp = angular.module('myapp', ['ngRoute']);
+myapp.controller('petController', function ($scope) { 	
+	$scope.pets=[
+	{name:'Dog',price:200},
+	{name:'Cat',price:220},
+	{name:'Rabbit',price:180},
+	{name:'Parrot',price:240}
+	];
+});
+
+myapp.config(function ($routeProvider) {
+    $routeProvider.
+    when('/', {
+        templateUrl: 'view1.html',
+        controller: 'petController'
+    }).
+    when('/price', {
+        templateUrl: 'view2.html',
+        controller: 'petController'
+    }).
+    otherwise({
+        redirectTo: '/'
+    });
+});
+</script>
+
+
+<script type="text/ng-template" id="view1.html">
+      <ul>
+	  <li ng-repeat="pet in pets">{{pet.name|uppercase}}</li>
+	  </ul>
+</script>
+
+<script type="text/ng-template" id="view2.html">
+      <ul>
+	  <li ng-repeat="pet in pets">{{pet.name}}-￥{{pet.price}}</li>
+	  </ul>
+</script>
+
+</body>
+</html>
