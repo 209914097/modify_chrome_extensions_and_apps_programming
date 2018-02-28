@@ -1,0 +1,2 @@
+# modify_chrome_extensions_and_apps_programming
+修改一下书中的例程排除一些bug，使之更完善
