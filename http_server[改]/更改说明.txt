@@ -1,0 +1,2 @@
+1.background.js中增加Native2Unicode(wenzi)函数，使它能够支持中文显示不乱码
+2.把端口80改为8080(manifest.json和background.js都要改端口)，避免与windows自带的IIS端口冲突。
